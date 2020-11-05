@@ -8,7 +8,7 @@ HEADERS = ({'User-Agent':
                 'Accept-Language': 'en-US, en;q=0.5'})
  
 # The webpage URL
-URL = "https://www.amazon.com/gp/product/B0874YS2N7/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1"
+URL = str(input('Please paste in the Amazon link: '))
  
 # HTTP Request
 webpage = requests.get(URL, headers=HEADERS)
@@ -39,8 +39,8 @@ def send_email():
     server.ehlo()
 
     server.login('KrishansBot@gmail.com','idwiehhspukllpnb')
-    subject = 'Tester'
-    body = 'Testing the body: https://www.amazon.com/gp/product/B0874YS2N7/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1'
+    subject = f'Your price for {get_title(soup)} just went down!'
+    body = 'Your item dropped in price!'
     message = f'Subject: {subject}\n\n{body}'
 
     server.sendmail(
